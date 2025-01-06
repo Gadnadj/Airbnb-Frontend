@@ -9,13 +9,19 @@ const RegisterPage = (props: Props) => {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const registerUser = (e: React.FormEvent) => {
+    const registerUser = async (e: React.FormEvent) => {
         e.preventDefault();
-        axios.post('/register', {
-            name,
-            email,
-            password,
-        });
+        try {
+            await axios.post('/register', {
+                name,
+                email,
+                password,
+            });
+            alert('Registration Successful, Now you can log in');
+        }
+        catch (e) {
+            alert('Registration Failed, Please try again later');
+        }
     };
 
     return (

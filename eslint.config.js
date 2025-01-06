@@ -22,8 +22,6 @@ export default {
     '@typescript-eslint': tseslint
   },
   rules: {
-    // Points-virgules obligatoires
-    semi: ['error', 'always'],
     // Guillemets simples
     quotes: ['error', 'single', { avoidEscape: true }],
     // Pas d'espace inutile avant les parenthèses
@@ -32,6 +30,8 @@ export default {
     'comma-dangle': ['error', 'never'],
     // Utilisation stricte des triples égales (===)
     eqeqeq: ['error', 'always'],
+    // Points-virgules obligatoires
+    semi: ['error', 'always'],
 
     // Règles pour React Hooks
     ...reactHooks.configs.recommended.rules,
