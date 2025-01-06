@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 
 type Props = {}
 
@@ -8,20 +9,23 @@ const LoginPage = (props: Props) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [redirect, setRedirect] = useState<boolean>(false);
+    const { setUser } = useContext(UserContext);
 
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             console.log('on mappelle');
-            await axios.post('/login', {
+            const response = await axios.post('/login', {
                 email,
                 password,
-            })
-            alert('Login Successful')
+            });
+            const userInfo = response.data;
+            setUser(userInfo);
+            alert('Login Successful');
             setRedirect(true);
         }
         catch {
-            alert('Login Failed, Try again!')
+            alert('Login Failed, Try again!');
         }
     }
 
