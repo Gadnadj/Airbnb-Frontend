@@ -27,7 +27,7 @@ export default {
     // Guillemets simples
     quotes: ['error', 'single', { avoidEscape: true }],
     // Pas d'espace inutile avant les parenthèses
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': ['never'],
     // Pas de trailing commas
     'comma-dangle': ['error', 'never'],
     // Utilisation stricte des triples égales (===)
