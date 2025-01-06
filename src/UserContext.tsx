@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState } from "react";
 import { User, UserContextType } from './types';
 
 export const UserContext = createContext<UserContextType>({

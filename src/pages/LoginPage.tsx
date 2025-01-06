@@ -14,7 +14,6 @@ const LoginPage = (props: Props) => {
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            console.log('on mappelle');
             const response = await axios.post('/login', {
                 email,
                 password,
