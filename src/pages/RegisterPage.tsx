@@ -11,7 +11,11 @@ const RegisterPage = (props: Props) => {
     const [password, setPassword] = useState<string>('');
     const registerUser = (e: React.FormEvent) => {
         e.preventDefault();
-        axios.get('/test');
+        axios.post('/register', {
+            name,
+            email,
+            password,
+        });
     };
 
     return (
