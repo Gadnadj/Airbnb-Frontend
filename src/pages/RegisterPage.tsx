@@ -29,15 +29,18 @@ const RegisterPage = (props: Props) => {
             <div className='mb-64'>
                 <h1 className='text-4xl text-center mb-4'>Register</h1>
                 <form className='max-w-md mx-auto' onSubmit={registerUser}>
-                    <input type="text" placeholder='Username'
+                    <input type="text"
+                        placeholder='Username'
                         value={name}
                         onChange={e => setName(e.target.value)} />
 
-                    <input type="email" placeholder='Your@email.com'
+                    <input type="email"
+                        placeholder='Your@email.com'
                         value={email}
                         onChange={e => setEmail(e.target.value)} />
-                        
-                    <input type="password" placeholder='Password'
+
+                    <input type="password"
+                        placeholder='Password'
                         value={password}
                         onChange={e => setPassword(e.target.value)} />
                     <button type='submit' className='primary'>Register</button>
