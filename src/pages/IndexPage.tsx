@@ -7,7 +7,7 @@ type Props = {}
 const IndexPage = (props: Props) => {
     return (
         <div>
-            <Header />
+            index page here
         </div>
     );
 };
