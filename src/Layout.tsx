@@ -6,7 +6,7 @@ type Props = {};
 
 const Layout = (props: Props) => {
   return (
-    <div>
+    <div className='p-4'>
       <Header />
       <Outlet />
     </div>
