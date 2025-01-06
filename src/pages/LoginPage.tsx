@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 type Props = {}
 
 const LoginPage = (props: Props) => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
+    const [redirect, setRedirect] = useState<boolean>(false);
 
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -17,10 +18,15 @@ const LoginPage = (props: Props) => {
                 password,
             })
             alert('Login Successful')
+            setRedirect(true);
         }
         catch {
             alert('Login Failed, Try again!')
         }
+    }
+
+    if (redirect) {
+        return <Navigate to={'/'} />
     }
 
     return (
