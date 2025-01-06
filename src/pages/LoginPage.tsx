@@ -12,8 +12,8 @@ const LoginPage = (props: Props) => {
                     <input type="email" placeholder='your@email.com' />
                     <input type="password" placeholder='password' />
                     <button className='primary'>Login</button>
-                    <div>
-                        Don't have an account yet? <Link to={'/register'}>Register</Link>
+                    <div className='text-center py-2 text-gray-500'>
+                        Don't have an account yet? <Link to={'/register'} className='underline text-black hover:text-primary'>Register Now</Link>
                     </div>
                 </form>
             </div>
