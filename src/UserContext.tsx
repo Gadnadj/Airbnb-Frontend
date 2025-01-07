@@ -15,7 +15,9 @@ export const UserContextProvider = ({ children }: props) => {
     const [user, setUser] = useState<User | null>(null);
     useEffect(() => {
         if (!user) {
-            axios.get('/profile');
+            axios.get('/profile').then(({ data }) => {
+                setUser(data);
+            });
         }
     }, [])
 
