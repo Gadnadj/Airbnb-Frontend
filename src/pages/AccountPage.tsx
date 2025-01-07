@@ -23,7 +23,7 @@ const Account = (props: Props) => {
     if (!ready) {
         return 'Loading...'
     }
-    if (ready && !user) return <Navigate to={'/login'} />
+    if (ready && !user && !redirect) return <Navigate to={'/login'} />
     //-------------------------------------------------------------//
 
     const linkClasses = (type: string | null = null) => {
@@ -37,7 +37,7 @@ const Account = (props: Props) => {
     }
 
     if (redirect) {
-        return <Navigate to={'/redirect'} />
+        return <Navigate to={redirect} />
     }
 
     return (
