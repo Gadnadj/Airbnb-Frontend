@@ -53,11 +53,11 @@ const PlacesPage = (props: Props) => {
             data.append('photos', files![i]);
         }
 
-        const response = await axios.post('/upload', data, {
+        const responses = await axios.post('/upload', data, {
             headers: { 'Content-type': 'multipart/form-data' }
         })
         setAddedPhotos(prev => {
-            return [...prev, response.data]
+            return [...prev, ...responses.data]
         });
     }
 
@@ -100,11 +100,11 @@ const PlacesPage = (props: Props) => {
                         <div className='mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
 
                             {addedPhotos.length > 0 && addedPhotos.map((link, index) => (
-                                <div key={index} >
-                                    <img src={'http://localhost:4000/uploads/' + link} className='rounded-2xl' />
+                                <div key={index} className='h-32 flex' >
+                                    <img src={'http://localhost:4000/uploads/' + link} className='rounded-2xl w-full object-cover' />
                                 </div>
                             ))}
-                            <label className=' flex items-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer'>
+                            <label className='h-32 flex items-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 cursor-pointer'>
                                 <input type="file" className='hidden' multiple onChange={uploadPhotos} />
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
