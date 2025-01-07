@@ -9,4 +9,5 @@ export interface User {
 export interface UserContextType {
     user: User | null;
     setUser: Dispatch<SetStateAction<User | null>>;
+    ready: boolean;
 }
