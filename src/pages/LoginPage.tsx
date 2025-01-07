@@ -14,12 +14,11 @@ const LoginPage = (props: Props) => {
     const handleLoginSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/login', {
+            const { data } = await axios.post('/login', {
                 email,
                 password,
             });
-            const userInfo = response.data;
-            setUser(userInfo);
+            setUser(data);
             alert('Login Successful');
             setRedirect(true);
         }
