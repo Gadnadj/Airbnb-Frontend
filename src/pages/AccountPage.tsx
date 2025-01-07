@@ -15,8 +15,8 @@ const Account = (props: Props) => {
 
     const logout = async () => {
         await axios.post('/logout');
-        setUser(null);
         setRedirect('/');
+        setUser(null);
     }
 
     //-------------------------------------------------------------//
