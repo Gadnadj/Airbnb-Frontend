@@ -14,7 +14,7 @@ const Account = (props: Props) => {
     let { subpage } = useParams();
     if (subpage === undefined) subpage = 'profile';
 
-    const logout = async () => {
+    const logout = async (): Promise<void> => {
         await axios.post('/logout');
         setRedirect('/');
         setUser(null);
