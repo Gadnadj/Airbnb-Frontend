@@ -28,7 +28,7 @@ const Account = (props: Props) => {
     //-------------------------------------------------------------//
 
     const linkClasses = (type: string | null = null) => {
-        let classes = 'py-2 px-6 inline-flex gap-1 rounded-full';
+        let classes = 'py-2 px-2 md:py-2 md:px-6 inline-flex gap-1 rounded-full';
         if (type === subpage) {
             classes += ' bg-primary text-white rounded-full';
         }
