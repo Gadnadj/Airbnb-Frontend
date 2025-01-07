@@ -17,32 +17,36 @@ const PlacesPage = (props: Props) => {
     const [checkOut, setCheckOut] = useState<string>('');
     const [maxGuests, setMaxGuests] = useState<number>(1);
 
-    const inputHeader = (text: string) => {
+    const inputHeader = (text: string): JSX.Element => {
         return (
             <h2 className='text-2xl mt-4' >{text}</h2>
         )
     }
 
-    const inputDescription = (text: string) => {
+    const inputDescription = (text: string): JSX.Element => {
         return (
             <p className='text-gray-500 text-sm'>{text}</p>
         )
     }
 
-    const h3Description = (text: string) => {
+    const h3Description = (text: string): JSX.Element => {
         return (
             <h3 className='mt-2 -mb-1'>{text}</h3>
 
         )
     }
 
-    const preInput = (header: string, description: string) => {
+    const preInput = (header: string, description: string): JSX.Element => {
         return (
             <>
                 {inputHeader(header)}
                 {inputDescription(description)}
             </>
         );
+    }
+
+    const addPhotoByLink = () => {
+
     }
 
     return (
