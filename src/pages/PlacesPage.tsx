@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Perks from '../Perks';
 import axios from 'axios';
 
@@ -17,6 +17,7 @@ const PlacesPage = (props: Props) => {
     const [checkIn, setCheckIn] = useState<string>('');
     const [checkOut, setCheckOut] = useState<string>('');
     const [maxGuests, setMaxGuests] = useState<number>(1);
+    const [redirect, setRedirect] = useState<string>('');
 
     const inputHeader = (text: string): JSX.Element => {
         return (
@@ -70,6 +71,26 @@ const PlacesPage = (props: Props) => {
         setPhotoLink('');
     }
 
+    const addNewPlace = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await axios.post('/places', {
+            title,
+            address,
+            addedPhotos,
+            description,
+            perks,
+            extraInfo,
+            checkIn,
+            checkOut,
+            maxGuests,
+        });
+        setRedirect('/account/places');
+    }
+
+    if (redirect) {
+        return <Navigate to={redirect} />
+    }
+
     return (
         <div>
             <div className='text-center'>
@@ -84,7 +105,7 @@ const PlacesPage = (props: Props) => {
             </div>
             {action === 'new' && (
                 <div>
-                    <form>
+                    <form onSubmit={addNewPlace}>
                         {preInput('Title', 'title for your place, should be short and catchy')}
                         <input type="text" placeholder='title, for example: My lovely appartment' value={title} onChange={(e) => { setTitle(e.target.value) }} />
 
@@ -99,8 +120,8 @@ const PlacesPage = (props: Props) => {
 
                         <div className='mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid-cols-6'>
 
-                            {addedPhotos.length > 0 && addedPhotos.map((link, index) => (
-                                <div key={index} className='h-32 flex' >
+                            {addedPhotos.length > 0 && addedPhotos.map((link) => (
+                                <div key={link} className='h-32 flex' >
                                     <img src={'http://localhost:4000/uploads/' + link} className='rounded-2xl w-full object-cover' />
                                 </div>
                             ))}
