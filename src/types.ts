@@ -11,3 +11,10 @@ export interface UserContextType {
     setUser: Dispatch<SetStateAction<User | null>>;
     ready: boolean;
 }
+
+export interface Place {
+    _id: string;
+    title: string;
+    photos: string[];
+    description: string;
+}

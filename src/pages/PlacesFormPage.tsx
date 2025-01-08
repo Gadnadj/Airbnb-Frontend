@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Perks from '../Perks';
+import AccountNav from '../AccountNav';
+import { Navigate, useParams } from 'react-router-dom';
 
 const PlacesFormPage = () => {
-
+  const { id } = useParams();
   const [title, setTitle] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [addedPhotos, setAddedPhotos] = useState<string[]>([]);
@@ -14,6 +16,23 @@ const PlacesFormPage = () => {
   const [checkIn, setCheckIn] = useState<string>('');
   const [checkOut, setCheckOut] = useState<string>('');
   const [maxGuests, setMaxGuests] = useState<number>(1);
+  const [redirect, setRedirect] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (!id) return;
+    axios.get('/places/' + id).then(response => {
+      const { data } = response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setAddedPhotos(data.photos);
+      setDescription(data.description);
+      setPerks(data.perks);
+      setExtraInfo(data.extraInfo);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuests(data.maxGuests);
+    });
+  }, [id])
 
   const inputHeader = (text: string): JSX.Element => {
     return (
@@ -80,10 +99,15 @@ const PlacesFormPage = () => {
       checkOut,
       maxGuests,
     });
+    setRedirect(true);
   }
+
+
+  if (redirect) return <Navigate to={'/account/places'} />
 
   return (
     <div>
+      <AccountNav />
       <form onSubmit={addNewPlace}>
         {preInput('Title', 'title for your place, should be short and catchy')}
         <input
