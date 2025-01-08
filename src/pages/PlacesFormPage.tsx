@@ -86,9 +86,9 @@ const PlacesFormPage = () => {
     setPhotoLink('');
   }
 
-  const addNewPlace = async (e: React.FormEvent) => {
+  const savePlace = async (e: React.FormEvent) => {
     e.preventDefault();
-    await axios.post('/places', {
+    const placeData = {
       title,
       address,
       addedPhotos,
@@ -98,17 +98,26 @@ const PlacesFormPage = () => {
       checkIn,
       checkOut,
       maxGuests,
-    });
-    setRedirect(true);
-  }
+    }
+    //update place
+    if (id) {
+      await axios.put('/places', { id, ...placeData });
+      setRedirect(true);
+    }
 
+    else {
+      //new place
+      await axios.post('/places', { placeData });
+      setRedirect(true);
+    }
+  }
 
   if (redirect) return <Navigate to={'/account/places'} />
 
   return (
     <div>
       <AccountNav />
-      <form onSubmit={addNewPlace}>
+      <form onSubmit={savePlace}>
         {preInput('Title', 'title for your place, should be short and catchy')}
         <input
           type='text'

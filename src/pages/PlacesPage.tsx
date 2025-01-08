@@ -16,8 +16,8 @@ const PlacesPage = () => {
         <div>
             <AccountNav />
             <div className='text-center'>
-                <Link className='inline-flex bg-primary gap-1 text-white py-2 px-6 rounded-full' to={'/account/places/new'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                <Link className='inline-flex gap-1 bg-primary text-white py-2 px-6 rounded-full' to={'/account/places/new'}>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                     Add new place
@@ -25,10 +25,14 @@ const PlacesPage = () => {
             </div>
             <div className='mt-4'>
                 {places.length > 0 && places.map((place, index) => (
-                    <Link to={'/account/places/' + place._id} className='bg-gray-100 gap-4 p-4 rounded-2xl flex cursor-pointer' key={index}>
-                        <div className='w-32 h-32 bg-gray-300 grow shrink-0'>
+                    <Link to={'/account/places/' + place._id} className='flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl' key={index}>
+                        <div className="flex bg-gray-300 sm:w-36 sm:h-36 max-w-sm max-sm:w-24 max-sm:h-24 max-sm:flex-none rounded-xl">
                             {place.photos.length > 0 && (
-                                <img src={place.photos[0]} />
+                                <img
+                                    className="object-cover w-full h-full max-sm:w-full max-sm:h-full rounded-xl"
+                                    src={'http://localhost:4000/uploads/' + place.photos[0]}
+                                    alt="Place preview"
+                                />
                             )}
                         </div>
                         <div className='grow-0 shrink'>
