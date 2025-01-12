@@ -27,7 +27,7 @@ const PlacePage = (props: Props) => {
                 <div className="bg-black p-8 grid gap-4">
                     <div>
                         <h2 className="text-3xl">Photos of {place.title}</h2>
-                        <button onClick={() => setShowAllPhotos(false)} className="text-gray-700 fixed flex items-center gap-1 py-2 px-4 rounded-2xl text-black bg-gray-200 shadow-lg shadow-gray-400 text-lg right-12 top-8">
+                        <button onClick={() => setShowAllPhotos(false)} className="fixed flex items-center gap-1 py-2 px-4 rounded-2xl text-black bg-gray-200 shadow-lg shadow-gray-400 text-lg right-12 top-8">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
                                 <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" />
                             </svg>
@@ -36,7 +36,7 @@ const PlacePage = (props: Props) => {
                     </div>
                     {place.photos.map(photo => (
                         <div>
-                            <img className="w-full h-[600px] object-cover" src={'http://localhost:4000/uploads/' + photo} alt="" />
+                            <img className="sm:h-[400px] w-full md:h-[600px] object-cover" src={'http://localhost:4000/uploads/' + photo} alt="" />
                         </div>
                     ))}
                 </div>
@@ -47,21 +47,42 @@ const PlacePage = (props: Props) => {
     return (
         <div className="mt-4 bg-gray-100 -mx-8 px-8 py-8">
             <h1 className="text-3xl">{place?.title}</h1>
-            <a className='my-2 underline font-semibold text-sm' target="_blank" href={'https://maps.google.com/?q=' + place?.address}>{place?.address}</a>
+            <a className='my-2 underline font-semibold text-sm flex items-center gap-1 my-3' target="_blank" href={'https://maps.google.com/?q=' + place?.address}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+                </svg>
+                {place?.address}</a>
             <div className="relative">
-                <div className="grid gap-2 grid-cols-[2fr_1fr]">
-                    <div>
+                <div className="grid gap-2 grid-cols-1 md:grid-cols-[2fr_1fr] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
+                    <div className="overflow-hidden">
                         {place.photos?.[0] && (
-                            <img className='aspect-square object-cover' src={'http://localhost:4000/uploads/' + place.photos[0]} />
+                            <div className="h-full">
+                                <img 
+                                    className='w-full h-full object-cover aspect-square md:aspect-auto' 
+                                    src={'http://localhost:4000/uploads/' + place.photos[0]} 
+                                />
+                            </div>
                         )}
                     </div>
-                    <div className="grid">
-                        {place.photos?.[1] && (
-                            <img className="aspect-square object-cover" src={'http://localhost:4000/uploads/' + place.photos[1]} />
-                        )}
+                    <div className="grid grid-cols-2 md:grid-cols-1 md:grid-rows-2 gap-2 overflow-hidden">
+                        <div className="overflow-hidden">
+                            {place.photos?.[1] && (
+                                <div className="h-full">
+                                    <img 
+                                        className="w-full h-full object-cover" 
+                                        src={'http://localhost:4000/uploads/' + place.photos[1]} 
+                                    />
+                                </div>
+                            )}
+                        </div>
                         <div className="overflow-hidden">
                             {place.photos?.[2] && (
-                                <img className="aspect-square object-cover relative top-2" src={'http://localhost:4000/uploads/' + place.photos[2]} />
+                                <div className="h-full">
+                                    <img 
+                                        className="w-full h-full object-cover" 
+                                        src={'http://localhost:4000/uploads/' + place.photos[2]} 
+                                    />
+                                </div>
                             )}
                         </div>
                     </div>
@@ -75,6 +96,7 @@ const PlacePage = (props: Props) => {
                     </button>
                 )}
             </div>
+            
         </div>
     )
 }
