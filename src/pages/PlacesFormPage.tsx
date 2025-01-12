@@ -16,6 +16,7 @@ const PlacesFormPage = () => {
   const [checkIn, setCheckIn] = useState<string>('');
   const [checkOut, setCheckOut] = useState<string>('');
   const [maxGuests, setMaxGuests] = useState<number>(1);
+  const [price, setPrice] = useState<number>(0);
   const [redirect, setRedirect] = useState<boolean>(false);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const PlacesFormPage = () => {
       setCheckIn(data.checkIn);
       setCheckOut(data.checkOut);
       setMaxGuests(data.maxGuests);
+      setPrice(data.price);
     });
   }, [id])
 
@@ -93,8 +95,7 @@ const PlacesFormPage = () => {
 
   const selectAsMainPhoto = (e: FormEvent, link: string) => {
     e.preventDefault();
-    const addedPhotosWithoutSelected: string[] = addedPhotos.filter(photo => photo != link);
-    const newAddedPhotos = [link, ...addedPhotosWithoutSelected];
+    const newAddedPhotos: string[] = [link, ...addedPhotos.filter(photo => photo != link)];
     setAddedPhotos(newAddedPhotos);
   }
 
@@ -110,6 +111,7 @@ const PlacesFormPage = () => {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     }
     //update place
     if (id) {
@@ -252,7 +254,7 @@ const PlacesFormPage = () => {
           'Check in&out times',
           'add check in and out time, remember to have some time window for cleaning the room between guests'
         )}
-        <div className='grid sm:grid-cols-3 gap-2'>
+        <div className='grid grid-cols-2 gap-2 md:grid-cols-4'>
           <div>
             {h3Description('Check in time')}
             <input
@@ -285,6 +287,17 @@ const PlacesFormPage = () => {
               value={maxGuests}
               onChange={(e) => {
                 setMaxGuests(Number(e.target.value));
+              }}
+            />
+          </div>
+          <div>
+            {h3Description('Price')}
+            <input
+              type='number'
+              placeholder='0'
+              value={price}
+              onChange={(e) => {
+                setPrice(Number(e.target.value));
               }}
             />
           </div>

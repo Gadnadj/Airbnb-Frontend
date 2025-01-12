@@ -7,7 +7,7 @@ import { Place } from '../types';
 const PlacesPage = () => {
     const [places, setPlaces] = useState<Place[]>([]);
     useEffect(() => {
-        axios.get('/places').then(({ data }) => {
+        axios.get('/user-places').then(({ data }) => {
             setPlaces(data);
         })
     }, [])

@@ -17,4 +17,6 @@ export interface Place {
     title: string;
     photos: string[];
     description: string;
+    address: string;
+    price: number;
 }
