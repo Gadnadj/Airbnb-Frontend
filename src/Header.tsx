@@ -15,12 +15,12 @@ const Header = (props: Props) => {
                 <span className="hidden md:block font-bold text-xl">Airbnb</span>
             </Link>
 
-            <div className="flex border border-gray-300 rounded-full py-2 px-4 gap-2 shadow-md shadow-gray-300 items-center">
-                <div>Anywhere</div>
-                <div className="border-l border-gray-300 h-6 "></div>
-                <div>Any week</div>
-                <div className="border-l border-gray-300 h-6 "></div>
-                <div>Add guest</div>
+            <div className="flex border border-gray-300 rounded-full py-2 px-2 md:px-4 gap-1 md:gap-2 shadow-md shadow-gray-300 items-center text-sm md:text-base">
+                <div className="text-xs md:text-base">Anywhere</div>
+                <div className="border-l border-gray-300 h-4 md:h-6"></div>
+                <div className="text-xs md:text-base">Any week</div>
+                <div className="border-l border-gray-300 h-4 md:h-6"></div>
+                <div className="text-xs md:text-base">Add guest</div>
                 <button className="bg-primary rounded-full text-white p-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -28,7 +28,7 @@ const Header = (props: Props) => {
                 </button>
             </div>
 
-            <div className="flex border border-gray-300 rounded-full py-2 px-4 gap-2 items-center">
+            <div className="flex border border-gray-300 rounded-full py-2 px-2 md:px-4 gap-1 md:gap-2 items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
