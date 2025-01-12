@@ -23,13 +23,13 @@ const PlacesPage = () => {
                     Add new place
                 </Link>
             </div>
-            <div className='mt-4'>
+            <div className='mt-4 flex flex-col gap-y-4'>
                 {places.length > 0 && places.map((place, index) => (
                     <Link to={'/account/places/' + place._id} className='flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl' key={index}>
-                        <div className="flex bg-gray-300 sm:w-36 sm:h-36 max-w-sm max-sm:w-24 max-sm:h-24 max-sm:flex-none rounded-xl">
+                        <div className="flex w-32 h-32 shrink-0 rounded-xl">
                             {place.photos.length > 0 && (
                                 <img
-                                    className="object-cover w-full h-full max-sm:w-full max-sm:h-full rounded-xl"
+                                    className="object-cover w-full h-full rounded-xl"
                                     src={'http://localhost:4000/uploads/' + place.photos[0]}
                                     alt="Place preview"
                                 />

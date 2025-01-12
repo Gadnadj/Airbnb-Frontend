@@ -121,7 +121,7 @@ const PlacesFormPage = () => {
 
     else {
       //new place
-      await axios.post('/places', { placeData });
+      await axios.post('/places', { ...placeData });
       setRedirect(true);
     }
   }

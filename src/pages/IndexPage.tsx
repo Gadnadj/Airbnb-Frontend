@@ -8,7 +8,7 @@ const IndexPage = (props: Props) => {
     const [places, setPlaces] = useState<Place[]>([])
     useEffect(() => {
         axios.get('/places').then(response => {
-            setPlaces([...response.data, ...response.data, ...response.data, ...response.data]);
+            setPlaces([...response.data]);
         })
     }, [])
 
@@ -23,9 +23,11 @@ const IndexPage = (props: Props) => {
                                 <img className="rounded-2xl object-cover aspect-square" src={'http://localhost:4000/uploads/' + place?.photos[0]} />
                             )}
                         </div>
-                        <h2 className="text-sm truncate leading-4">{place?.title}</h2>
-                        <h3 className="font-bold truncate">{place?.address}</h3>
-                        <h3 className="font-bold truncate">{place?.price + '$'}</h3>
+                        <h2 className="font-bold ">{place?.address}</h2>
+                        <h3 className="text-sm text-gray-500">{place?.title}</h3>
+                        <div className="mt-1">
+                            <span className="font-bold">${place?.price}</span> per night
+                        </div>
 
                     </div>
 
