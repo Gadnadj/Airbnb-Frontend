@@ -22,6 +22,6 @@ export interface Place {
     extraInfo: string;
     checkIn: number;
     checkOut: number;
-    maxGuest: number;
+    maxGuests: number;
     price: number;
 }
