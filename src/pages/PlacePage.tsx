@@ -112,10 +112,14 @@ const PlacePage = (props: Props) => {
                     <div className="mb-2">
                         <span className="font-bold">Check-out: </span>{place.checkOut}<br />
                     </div>
-                    <div className="mb-2">
+                    <div className="mb-3">
                         <span className="font-bold">Max Guests: </span>{place.maxGuests}<br />
                     </div>
-
+                    {place.extraInfo && (
+                        <div className="text-sm text-gray-700  leading-2 gap-1">
+                            <span className="text-black text-[16px] font-bold ">Extras Infos: </span>{place.extraInfo}
+                        </div>
+                    )}
                 </div>
                 <BookingWidget place={place} />
             </div>
