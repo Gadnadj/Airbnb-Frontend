@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { Place } from '../types';
 import { Link } from "react-router-dom";
 
-type Props = {}
-
-const IndexPage = (props: Props) => {
+const IndexPage = () => {
     const [places, setPlaces] = useState<Place[]>([])
     useEffect(() => {
         axios.get('/places').then(response => {
