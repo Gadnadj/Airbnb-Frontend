@@ -1,22 +1,41 @@
 import { useState } from 'react';
-import { Place } from './types';
+import { Place, Booking } from './types';
 import { differenceInCalendarDays } from 'date-fns';
+import axios from 'axios';
 
 type Props = {
     place: Place;
 }
 
 const BookingWidget = ({ place }: Props) => {
-    const [checkIn, setCheckIn] = useState<string>('');
-    const [checkOut, setCheckOut] = useState<string>('');
+    const [checkIn, setCheckIn] = useState<Date>();
+    const [checkOut, setCheckOut] = useState<Date>();
     const [numOfGuests, setNumOfGuests] = useState<number>(1);
     const [nameGuest, setNameGuest] = useState<string>('');
     const [mobile, setMobile] = useState<string>('');
+    const [redirect, setRedirect] = useState<string>('');
+
     let numberOfDays = 0;
     let calculatePrice = place.price;
     if (checkIn && checkOut) {
         numberOfDays = differenceInCalendarDays(new Date(checkOut), new Date(checkIn))
         calculatePrice = numberOfDays * place.price
+    }
+
+    const bookingData: Booking | null = checkIn && checkOut ? {
+        place: place._id,
+        checkIn,
+        checkOut,
+        name: nameGuest,
+        phone: mobile,
+        price: calculatePrice,
+        numOfNights: numberOfDays
+    } : null;
+
+    const sendBooking = async () => {
+        const response = await axios.post('/booking', { ...bookingData });
+        const bookingId = response.data._id;
+        setRedirect(`/account/bookings/${bookingId}`);
     }
 
     return (
@@ -35,11 +54,11 @@ const BookingWidget = ({ place }: Props) => {
                     <div className="md:flex">
                         <div className="text-sm md:text-lg py-4 px-2">
                             <label className="font-bold text-sm md:text-lg">Check in: </label>
-                            <input className="text-sm md:text-lg" type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)} />
+                            <input className="text-sm md:text-lg" type="date" value={checkIn ? checkIn.toISOString().split('T')[0] : ''} onChange={(e) => setCheckIn(e.target.value ? new Date(e.target.value) : undefined)} />
                         </div>
                         <div className="text-sm md:text-lg py-4 px-2 border-l">
                             <label className="font-bold text-sm md:text-lg">Check Out: </label>
-                            <input className="text-sm md:text-lg" type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)} />
+                            <input className="text-sm md:text-lg" type="date" value={checkOut ? checkOut.toISOString().split('T')[0] : ''} onChange={(e) => setCheckOut(e.target.value ? new Date(e.target.value) : undefined)} />
                         </div>
                     </div>
                     <div className="text-sm md:text-lg py-4 px-2 border-t">
@@ -64,7 +83,7 @@ const BookingWidget = ({ place }: Props) => {
                 </div>
 
                 {numberOfDays >= 0 && numOfGuests <= place.maxGuests && mobile.length === 10 && nameGuest.length > 1 && (
-                    <button className="primary text-sm md:text-md">
+                    <button onClick={() => sendBooking()} className="primary text-sm md:text-md">
                         Book this place
                     </button>
                 )}

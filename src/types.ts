@@ -25,3 +25,13 @@ export interface Place {
     maxGuests: number;
     price: number;
 }
+
+export interface Booking {
+    place: string;
+    checkIn: Date;
+    checkOut: Date;
+    name: string;
+    phone: string;
+    price: number;
+    numOfNights: number;
+}
