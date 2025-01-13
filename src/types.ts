@@ -27,6 +27,7 @@ export interface Place {
 }
 
 export interface Booking {
+    _id: string;
     place: Place;
     checkIn: Date;
     checkOut: Date;

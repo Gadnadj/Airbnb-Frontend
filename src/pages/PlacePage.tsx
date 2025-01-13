@@ -33,8 +33,8 @@ const PlacePage = () => {
                             Close Photos
                         </button>
                     </div>
-                    {place.photos.map(photo => (
-                        <div>
+                    {place.photos.map((photo, index) => (
+                        <div key={index}>
                             <img className="sm:h-[400px] w-full md:h-[600px] object-cover" src={'http://localhost:4000/uploads/' + photo} alt="" />
                         </div>
                     ))}

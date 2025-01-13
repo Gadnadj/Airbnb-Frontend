@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Booking } from '../types';
 import PlaceImg from '../PlaceImg';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 type Props = {}
 
@@ -19,7 +20,7 @@ const BookingsPage = () => {
             <AccountNav />
             <div>
                 {bookings?.length > 0 && bookings.map((booking, index) => (
-                    <div className='flex gap-4 bg-gray-200 rounded-2xl overflow-hidden'>
+                    <Link to={`/account/bookings/${booking._id}`} key={index} className='flex gap-4 bg-gray-200 rounded-2xl overflow-hidden'>
                         <div className='w-48'>
                             <img
                                 className="object-cover w-full h-full rounded-xl "
@@ -54,7 +55,7 @@ const BookingsPage = () => {
 
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
