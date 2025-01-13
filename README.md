@@ -1,50 +1,80 @@
-# React + TypeScript + Vite
+# 🌟 [Airbnb+ Clone]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application replicating the core functionality of **Airbnb**, built with **React**, **TypeScript** and **Tailwind CSS**. The project enables users to create accommodations, search for bookings, validate reservations seamlessly...
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🖼️ **Screenshot**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Home Page](src/assets/Images/Home.png)
+![Place](src/assets/Images/Place.png)
+![Book a place](src/assets/Images/Place2.png)
+![My Bookings](src/assets/Images/mybooking.png)
+![Create a place](src/assets/Images/create.png)
+![My Accomodation](src/assets/Images/myplace.png)
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 **Features**
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- 🏠 **Create Accommodations**: Add new accommodations with detailed descriptions and photos.
+- 🔍 **Search Bookings**: Search from the homepage your futur booking.
+- ✅ **Validate Bookings**: Confirm and manage reservations in real time.
+- 🖼️ **Responsive Design**: Fully optimized for all screen sizes and devices.
+- 🖱️ **Interactive UI**: Enjoy smooth animations and user-friendly interfaces.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## 🛠️ **Tech Stack**
+
+| **Category**   | **Technologies**                         |
+|----------------|------------------------------------------|
+| Frontend       | React, TypeScript, Tailwind CSS          |
+| Backend        | Node.js, Express                         |
+| Database       | MongoDB                                  |
+| Authentication | JSON Web Tokens (JWT)                    |
+
+---
+
+## 💻 **Installation**
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/gadnadj/Airbnb-Frontend.git
+   git clone https://github.com/gadnadj/Airbnb-Backend.git
+   
+4. Navigate to the project directory:
+
+   ```bash
+   in two different terminals:
+   cd Airbnb-Frontend
+   cd Airbnb-Backend
+
+5. Install dependencies:
+
+   ```bash
+   For the two terminals:
+   npm install
+
+7. Start the development server in the backend terminal:
+
+   ```bash
+   nodemon index.js
+
+8. Start the development in the frontend terminal:
+
+   ```bash
+   npm run dev
+
+9. Open your browser and navigate to:
+
+   ```bash
+   http://localhost:5173
+
+In the project directory, you can run:
+
+npm run dev: Start the development server.
+npm run build: Build the project for production.
+npm run preview: Preview the production build.
