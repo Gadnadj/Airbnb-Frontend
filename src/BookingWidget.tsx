@@ -7,7 +7,7 @@ type Props = {
 const BookingWidget = ({ place }: Props) => {
     return (
         <div>
-            <div className="mt-4 md:mt-2 bg-white shadow-lg p-4 rounded-2xl">
+            <div className="mt-4 md:mt-2 bg-white shadow-2xl shadow-gray-700 p-4 rounded-2xl">
                 <div className="text-md md:text-2xl text-center mb-2">
                     <span className="text-md md:text-lg font-bold">Price: ${place.price} / per night</span>
                 </div>

@@ -4,9 +4,7 @@ import { useParams } from "react-router-dom";
 import { Place } from "../types";
 import BookingWidget from "../BookingWidget";
 
-type Props = {}
-
-const PlacePage = (props: Props) => {
+const PlacePage = () => {
     const { id } = useParams();
     const [place, setPlace] = useState<Place>();
     const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
@@ -46,10 +44,10 @@ const PlacePage = (props: Props) => {
     }
 
     return (
-        <div className="mt-4 bg-gray-100 px-8 py-8 md:-mx-8">
+        <div className="mt-4 bg-gray-100 px-8 pt-8 md:-mx-8">
             <div className="max-w-6xl mx-auto">
                 <h1 className="text-3xl">{place?.title}</h1>
-                <a className='my-2 underline font-semibold text-sm flex items-center gap-1 my-3' target="_blank" href={'https://maps.google.com/?q=' + place?.address}>
+                <a className='underline font-semibold text-sm flex items-center gap-1 my-3' target="_blank" href={'https://maps.google.com/?q=' + place?.address}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
                     </svg>
@@ -115,15 +113,15 @@ const PlacePage = (props: Props) => {
                     <div className="mb-3">
                         <span className="font-bold">Max Guests: </span>{place.maxGuests}<br />
                     </div>
-                    {place.extraInfo && (
-                        <div className="text-sm text-gray-700  leading-2 gap-1">
-                            <span className="text-black text-[16px] font-bold ">Extras Infos: </span>{place.extraInfo}
-                        </div>
-                    )}
+
                 </div>
                 <BookingWidget place={place} />
             </div>
-
+            {place.extraInfo && (
+                <div className="text-sm text-gray-700 leading-2 gap-1 mt-9 flex flex-col bg-white -mx-8 px-8 py-8">
+                    <span className="text-black text-[26px] font-bold mb-2 ">Extras Infos</span>IMPORTANT NOTICE: {place.extraInfo}
+                </div>
+            )}
         </div>
     )
 }
