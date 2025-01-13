@@ -19,7 +19,7 @@ const IndexPage = (props: Props) => {
             {places.length > 0 && (
                 places.map((place, index) => (
                     <Link to={'/places/' + place._id} key={index}>
-                        <div className="bg-gray-500 rounded-2xl flex mb-2">
+                        <div className="bg-gray-500 rounded-2xl flex mb-2 shadow-2xl shadow-gray-400">
                             {place?.photos[0] && (
                                 <img className="rounded-2xl object-cover aspect-square" src={'http://localhost:4000/uploads/' + place?.photos[0]} />
                             )}
