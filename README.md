@@ -1,4 +1,4 @@
-# 🌟 [Airbnb+ Clone]
+# 🌟 [Airbnb Clone]
 
 A modern web application replicating the core functionality of **Airbnb**, built with **React**, **TypeScript** and **Tailwind CSS**. The project enables users to create accommodations, search for bookings, validate reservations seamlessly...
 
