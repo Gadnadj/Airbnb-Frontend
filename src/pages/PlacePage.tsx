@@ -58,6 +58,7 @@ const PlacePage = () => {
                             {place.photos?.[0] && (
                                 <div className="h-full">
                                     <img
+                                        onClick={() => setShowAllPhotos(true)}
                                         className='w-full h-full object-cover aspect-square md:aspect-auto'
                                         src={'http://localhost:4000/uploads/' + place.photos[0]}
                                     />
@@ -69,6 +70,7 @@ const PlacePage = () => {
                                 {place.photos?.[1] && (
                                     <div className="h-full">
                                         <img
+                                            onClick={() => setShowAllPhotos(true)}
                                             className="w-full h-full object-cover"
                                             src={'http://localhost:4000/uploads/' + place.photos[1]}
                                         />
@@ -79,6 +81,7 @@ const PlacePage = () => {
                                 {place.photos?.[2] && (
                                     <div className="h-full">
                                         <img
+                                            onClick={() => setShowAllPhotos(true)}
                                             className="w-full h-full object-cover"
                                             src={'http://localhost:4000/uploads/' + place.photos[2]}
                                         />
@@ -100,7 +103,7 @@ const PlacePage = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] mt-8 gap-8">
                 <div>
-                    <div className="mb-2">
+                    <div className="mb-2 text-justify">
                         <h2 className="font-semibold text-2xl ">Description</h2>
                         {place?.description}<br />
                     </div>
@@ -118,7 +121,7 @@ const PlacePage = () => {
                 <BookingWidget place={place} />
             </div>
             {place.extraInfo && (
-                <div className="text-sm text-gray-700 leading-2 gap-1 mt-9 flex flex-col bg-white -mx-8 px-8 py-8">
+                <div className="text-sm text-gray-700 leading-2 gap-1 mt-9 flex flex-col bg-white -mx-8 px-8 py-8 border-t border-gray-400 text-justify">
                     <span className="text-black text-[26px] font-bold mb-2 ">Extras Infos</span>IMPORTANT NOTICE: {place.extraInfo}
                 </div>
             )}
