@@ -45,17 +45,17 @@ A modern web application replicating the core functionality of **Airbnb**, built
    git clone https://github.com/gadnadj/Airbnb-Frontend.git
    git clone https://github.com/gadnadj/Airbnb-Backend.git
    
-4. Navigate to the project directory:
+4. Navigate to the project directory in two different terminals:
 
    ```bash
-   in two different terminals:
+   
    cd Airbnb-Frontend
    cd Airbnb-Backend
 
-5. Install dependencies:
+5. Install dependencies for the two terminals:
 
    ```bash
-   For the two terminals:
+   
    npm install
 
 7. Start the development server in the backend terminal:
