@@ -24,7 +24,7 @@ const PlacePage = () => {
         return (
             <div className="absolute inset-0 bg-black min-h-screen text-white">
                 <div className="bg-black p-8 grid gap-4">
-                    <div>
+                    <div className="grid grid-cols-2">
                         <h2 className="sm:text-3xl">Photos of {place.title}</h2>
                         <button onClick={() => setShowAllPhotos(false)} className="fixed flex items-center gap-1 py-2 px-4 rounded-2xl text-black bg-gray-200 shadow-lg shadow-gray-400 text-lg right-12 top-8">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
@@ -45,21 +45,21 @@ const PlacePage = () => {
 
     return (
         <div className="mt-4 bg-gray-100 px-8 pt-8 md:-mx-8">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto ">
                 <h1 className="text-3xl">{place?.title}</h1>
                 <a className='underline font-semibold text-sm flex items-center gap-1 my-3' target="_blank" href={'https://maps.google.com/?q=' + place?.address}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
                     </svg>
                     {place?.address}</a>
-                <div className="relative">
+                <div className="relative shadow-2xl shadow-gray-600 rounded-3xl">
                     <div className="grid gap-2 grid-cols-1 md:grid-cols-[2fr_1fr] rounded-3xl overflow-hidden h-[400px] md:h-[500px]">
                         <div className="overflow-hidden">
                             {place.photos?.[0] && (
                                 <div className="h-full">
                                     <img
                                         onClick={() => setShowAllPhotos(true)}
-                                        className='w-full h-full object-cover aspect-square md:aspect-auto'
+                                        className='w-full h-full object-cover aspect-square md:aspect-auto cursor-pointer'
                                         src={'http://localhost:4000/uploads/' + place.photos[0]}
                                     />
                                 </div>
@@ -71,7 +71,7 @@ const PlacePage = () => {
                                     <div className="h-full">
                                         <img
                                             onClick={() => setShowAllPhotos(true)}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover cursor-pointer"
                                             src={'http://localhost:4000/uploads/' + place.photos[1]}
                                         />
                                     </div>
@@ -82,7 +82,7 @@ const PlacePage = () => {
                                     <div className="h-full">
                                         <img
                                             onClick={() => setShowAllPhotos(true)}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover cursor-pointer"
                                             src={'http://localhost:4000/uploads/' + place.photos[2]}
                                         />
                                     </div>
@@ -121,7 +121,7 @@ const PlacePage = () => {
                 <BookingWidget place={place} />
             </div>
             {place.extraInfo && (
-                <div className="text-sm text-gray-700 leading-2 gap-1 mt-9 flex flex-col bg-white -mx-8 px-8 py-8 border-t border-gray-400 text-justify">
+                <div className="text-sm text-gray-700 leading-2 gap-1 mt-9 flex flex-col bg-white -mx-8 px-8 py-8 text-justify">
                     <span className="text-black text-[26px] font-bold mb-2 ">Extras Infos</span>IMPORTANT NOTICE: {place.extraInfo}
                 </div>
             )}
