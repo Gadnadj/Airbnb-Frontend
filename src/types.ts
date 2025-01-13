@@ -27,11 +27,12 @@ export interface Place {
 }
 
 export interface Booking {
-    place: string;
+    place: Place;
     checkIn: Date;
     checkOut: Date;
     name: string;
     phone: string;
     price: number;
     numOfNights: number;
+
 }
