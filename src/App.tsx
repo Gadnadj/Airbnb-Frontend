@@ -33,11 +33,6 @@ function App() {
           <Route path='/places/:id' element={<PlacePage />} />
           <Route path='/account/bookings/:id' element={<BookingPage />} />
           <Route path='/account/bookings' element={<BookingsPage />} />
-
-
-
-
-
         </Route>
       </Routes>
     </UserContextProvider>
