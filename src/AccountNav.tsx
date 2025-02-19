@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 
-type Props = {}
+
 
 const AccountNav = (props: Props) => {
     const { pathname } = useLocation();
